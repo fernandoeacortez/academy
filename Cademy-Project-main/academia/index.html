@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema da Academia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- MENU LATERAL -->
+    <nav class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#">🏠 Início</a></li>
+        <li><a href="#" id="btnToggleForm">📋 Cadastro de Aluno</a></li>
+        <li><a href="#">🗓️ Datas</a></li>
+        <li><a href="#" id="btnToggleTabela">👥 Alunos</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      <h1>Gerenciamento de Academia</h1>
+
+      <!-- Estatísticas -->
+      <div id="estatisticas" class="cards-container">
+        <div class="card total">Total de Alunos: <span id="totalAlunos">0</span></div>
+        <div class="card planos">Planos únicos: <span id="planosUnicos">0</span></div>
+      </div>
+
+      <!-- Formulário -->
+      <form id="formAluno" class="form-visivel">
+        <input type="text" id="nome" placeholder="Nome" required autocomplete="off">
+        <input type="number" id="idade" placeholder="Idade" required min="10" max="120">
+
+        <!-- Novos campos -->
+        <input type="text" id="endereco" placeholder="Endereço" required>
+        <input type="tel" id="telefone" placeholder="Telefone" required pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}" title="Digite um telefone válido com DDD e 10 ou 11 dígitos, exemplo: (11) 98765-4321">
+        <input type="text" id="cpf" placeholder="CPF" required pattern="\d{11}" title="Digite um CPF válido com 11 dígitos (sem pontos e traços)">
+
+        <!-- Plano como select -->
+        <select id="plano" required>
+          <option value="">Selecione um plano</option>
+          <option value="Mensal">Mensal</option>
+          <option value="Trimestral">Trimestral</option>
+          <option value="Anual">Anual</option>
+        </select>
+
+        <!-- Matrícula gerada automaticamente e oculta -->
+        <input type="hidden" id="matricula">
+
+        <button type="submit">Salvar</button>
+      </form>
+
+      <!-- Tabela -->
+      <section id="secaoTabela">
+        <h2>Alunos Cadastrados</h2>
+        <table id="tabelaAlunos">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Idade</th>
+              <th>Endereço</th>
+              <th>Telefone</th>
+              <th>CPF</th>
+              <th>Plano</th>
+              <th>Matrícula</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Gráfico -->
+      <h2>Distribuição de Planos</h2>
+      <div class="grafico-container">
+        <canvas id="graficoPlanos" width="300" height="300"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
